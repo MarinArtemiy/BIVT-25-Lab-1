@@ -1,174 +1,122 @@
-﻿using System.Net.NetworkInformation;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
 
-namespace Lab1
+namespace Lab2
 {
     public class Purple
     {
-        public bool Task1(int a, int b, int c)
-        {
-            bool answer = false;
-
-            // code here
-            if ((a > 0 && b > 0 && c > 0) || (a < 0 && b < 0 && c < 0))
-            {
-                answer = true;
-            }
-            // end
-
-            return answer;
-        }
-        public bool Task2(int a, int b)
-        {
-            bool answer = false;
-
-            // code here
-            if (a == 0 ^ b == 0) // 0%int==0 int!=0
-            {
-                answer = true; 
-            }
-            else
-            {
-                int fnum = Math.Max(Math.Abs(a), Math.Abs(b)); //number with bigger abs value
-                int snum = Math.Min(Math.Abs(a), Math.Abs(b)); //number with smaller abs value
-                answer = fnum % snum == 0;
-            }
-
-            // end
-
-            return answer;
-        }
-        public bool Task3(int a, int b)
-        {
-            bool answer = false;
-
-            // code here
-
-            if (Math.Pow(Math.Min(a, b), 2.00) == Math.Max(a, b) || Math.Pow(Math.Min(a, b), 3.00) == Math.Max(a, b))
-            {
-                answer = true;
-            }
-            // end
-
-            return answer;
-        }
-        public double Task4(double d, double f, double g)
-        {
-            double answer = 0;
-
-            // code here
-            answer = f * f - (4 * d * g);
-            // end
-
-            return answer;
-        }
-        public double Task5(double x)
-        {
-            double answer = 0;
-
-            // code here
-            if (x <= -1)
-            {
-                answer = 1;
-                
-            }
-            else if (x <= 1)
-            {
-                answer = -x;
-            }
-            else if (x > 1)
-            {
-                answer = -1;
-            }
-            // end
-
-            return answer;
-        }
-        public bool Task6(double squareS, double circleS)
-        {
-            bool answer = false;
-
-            // code here
-            const double Pi = Math.PI;
-            double diagonal = Math.Sqrt(2*squareS);
-            if (diagonal * diagonal * Pi / 4 <= circleS)
-            {
-                answer = true;
-            }
-            // end
-
-            return answer;
-        }
-
-        public int Task7(bool s, bool t, bool f)
+        const double E = 0.0001;
+        public int Task1(int n, int p, int h)
         {
             int answer = 0;
 
             // code here
-            if (s)
+            
+            for (int i=1; i<=n; i++)
             {
-                if (t)
-                {
-                    answer = 6;
-                }
-                else
-                {
-                    if (f)
-                    {
-                        answer = 10;
-                    }
-                    else
-                    {
-                        answer = 2;
-                    }
-                }
+                int a = (p + h*(i - 1) );
+                answer += a * a;
+                Console.WriteLine(answer);
             }
-            else
-            {
-                if (t)
-                {
-                    answer = 3;
-                }
-                else
-                {
-                    if (f)
-                    {
-                        answer = 5;
+            Console.WriteLine(answer);
+            // end
 
-                    }
-                    else
-                    {
-                        answer = 1;
-                    }
+            return answer;
+        }
+        public (int quotient, int remainder)  Task2(int a, int b)
+        {
+            int quotient = 0;
+            int remainder = 0;
+
+            // code here
+            while (a >= b)
+            {
+                a = a - b;
+                quotient++;
+            }
+            remainder = a;
+            // end
+
+            return (quotient, remainder);
+        }
+        public double Task3()
+        {
+            double answer = 0;
+
+            // code here
+            // a/b c/d a+c/b+d
+            // 1/1 2/1 3/2
+            double a1=1,b1=1,a2=2,b2=1,a3=3,b3=2,a4=0,b4=1;
+            while (true)
+            {
+                if (Math.Abs((a3 / b3) - (a4 / b4)) < E)
+                {
+                    answer = a4 / b4;
+                    break;
                 }
+                a4 = a2 + a3; b4 = b2 + b3; //calculating num4 parts
+
+                a1 = a2; b1 = b2; //num2->num1, forget num1
+                a2 = a3; b2 = b3; //num3->num2
+                a3 = a4; b3 = b4; //num4->num3
+
             }
             // end
 
             return answer;
         }
-        public bool Task8(int year, int pupils, int salary)
+        public int Task4(double b, double q)
         {
-            bool answer = false;
-            const int bank = 10000;
+            int answer = 0;
 
             // code here
-            //amount of money needed
-            double groups = (double)pupils / 7;
-            int avrors = (int)Math.Ceiling(groups);
-            int money_total = avrors * salary + pupils * 5;
 
-            //is leap year
-            bool is_leap = false;
-            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
-            {
-                is_leap = true;
-            }
-            System.Console.WriteLine(is_leap);
-
-            //answer
-            answer = (money_total <= bank) && (is_leap==false);
             // end
 
             return answer;
+        }
+        public int Task5(int a, int b)
+        {
+            int answer = 0;
+
+            // code here
+
+            // end
+
+            return answer;
+        }
+        public long Task6()
+        {
+            long answer = 0;
+
+            // code here
+
+            // end
+
+            return answer;
+        }
+
+        public int Task7(double S, double d)
+        {
+            int answer = 0;
+
+            // code here
+
+            // end
+
+            return answer;
+        }
+        public (double SS, double SY) Task8(double a, double b, double h)
+        {
+            double SS = 0;
+            double SY = 0;
+
+            // code here
+
+            // end
+
+            return (SS, SY);
         }
     }
 }
